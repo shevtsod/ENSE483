@@ -8,7 +8,7 @@
 
 - Draw UML class and sequence diagrams for tutorial #3:
 
-  https://youtu.be/4NDwINudmDk?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
+  https://youtu.be/nQwkCb_eq50?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
 
 - Modify tutorial #3 source code:
   - Add a third button that displays an image when clicked.
