@@ -2,22 +2,14 @@
 
 ## Problem Statement
 
-> check the 7 first tutorial videos at:
-> https://www.youtube.com/watch?v=4NDwINudmDk&list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
->
-> Draw a class diagram and sequence diagram for the code attached to
-> tutorial # 3.
->
-> Modify the code in tutorial 3 to add a third button that, when clicked,
-> displays an image. (Showing images is shown in Tutorial 5.)
->
-> Add a few more activities and switch between them using buttons. Imagine we
-> are developing a multi-activity app (an IoT gateway) that reports IoT
-> collected from different sensors on the phone and using many different
-> communications methods to upload data. Each activtiy represents one of these
-> methods.
->
-> Add different list views to the different activities you developed above.
+- Watch first 7 tutorials at
+  https://youtu.be/4NDwINudmDk?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
+- Draw UML class and sequence diagrams for tutorial #3
+  (https://youtu.be/4NDwINudmDk?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC).
+- Modify tutorial #3 source code:
+  - Add a third button that displays an image when clicked.
+  - Add two more activities and switch between them using buttons.
+  - Add list views to the new activities.
 
 ## Developing
 
@@ -25,3 +17,6 @@ Forked from https://github.com/mitchtabian/Buttons.
 
 Developed and built using
 [Android Studio](https://developer.android.com/studio).
+
+UML diagrams created using [UMLet](https://www.umlet.com/) and available under
+[`./doc`](./doc).
