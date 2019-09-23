@@ -1,5 +1,6 @@
 package com.tabian.buttons;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,11 +20,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: Started.");
 
-        Button firstButton = (Button) findViewById(R.id.btnOne);
-        Button secondButton = (Button) findViewById(R.id.btnTwo);
-        final Button showHideImageButton = (Button) findViewById(R.id.btnThree);
+        // Navigation buttons
+        final Button buttonMainActivity = (Button) findViewById(R.id.buttonMainActivity);
+        final Button buttonSecondActivity = (Button) findViewById(R.id.buttonSecondActivity);
+        final Button buttonThirdActivity = (Button) findViewById(R.id.buttonThirdActivity);
 
-        firstButton.setOnClickListener(new View.OnClickListener() {
+        // Activity buttons
+        final Button btnOne = (Button) findViewById(R.id.btnOne);
+        final Button btnTwo = (Button) findViewById(R.id.btnTwo);
+        final Button btnThree = (Button) findViewById(R.id.btnThree);
+
+        // Image
+        final ImageView image = (ImageView) findViewById(R.id.image);
+
+        buttonMainActivity.setEnabled(false);
+
+        // OnClick listeners
+
+        buttonSecondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: Clicked buttonSecondActivity");
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonThirdActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: Clicked buttonThirdActivity");
+
+                Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Clicked Button One!");
@@ -31,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        secondButton.setOnClickListener(new View.OnClickListener() {
+        btnTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Clicked Button Two!");
@@ -39,19 +73,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        showHideImageButton.setOnClickListener(new View.OnClickListener() {
+        btnThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Clicked Show/Hide Image Button!");
 
-                ImageView image = (ImageView) findViewById(R.id.image);
-
-                if (image.getVisibility() == View.VISIBLE) {
-                    showHideImageButton.setText("Show Image");
-                    image.setVisibility(View.INVISIBLE);
-                } else {
-                    showHideImageButton.setText("Hide Image");
-                    image.setVisibility(View.VISIBLE);
+                switch(image.getVisibility()) {
+                    case View.VISIBLE:
+                        btnThree.setText("Show Image");
+                        image.setVisibility(View.INVISIBLE);
+                        break;
+                    case View.INVISIBLE:
+                        btnThree.setText("Hide Image");
+                        image.setVisibility(View.VISIBLE);
+                        break;
+                    case View.GONE:
+                    default:
+                        break;
                 }
             }
         });
@@ -59,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Prints out the message as a toast
-     * @param message
+     * @param message Message to print
      */
     private void toastMessage(String message){
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
