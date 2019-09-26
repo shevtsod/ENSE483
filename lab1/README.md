@@ -1,5 +1,7 @@
 # ENSE 483 - Lab 1 - Android Intro
 
+![Demo](./assets/demo.gif)
+
 ## Problem Statement
 
 - Watch first 7 tutorials at:
