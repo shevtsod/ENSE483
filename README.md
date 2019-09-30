@@ -6,3 +6,4 @@ Fall 2019.
 ## Overview
 
 - [**Lab 1** - Android Intro](./lab1)
+- [**Lab 2** - Android UI](./lab2)

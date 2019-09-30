@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tabian.buttons.MainActivity">
+
+    <include
+        layout="@layout/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:id="@+id/navigation"/>
+
+    <Button
+        android:text="First Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:id="@+id/btnOne"/>
+
+    <Button
+        android:text="Second Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnOne"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnTwo"/>
+
+    <Button
+        android:text="Show Image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnTwo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnThree"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnThree"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Cats looking at viewer"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/cats" />
+
+</RelativeLayout>
