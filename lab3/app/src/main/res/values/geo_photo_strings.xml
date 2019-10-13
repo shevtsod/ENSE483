@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="photo_description_user_submitted">Photo taken by user</string>
+  <string name="photo_location">Location geo-tag</string>
+  <string name="photo_location_latitude">Latitude</string>
+  <string name="photo_location_longitude">Longitude</string>
+</resources>

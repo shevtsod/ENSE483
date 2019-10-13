@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp"
+  tools:context=".main.SecondFragment">
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="56dp"
+    android:text="@string/text_youtube_description" />
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/text_youtube_url"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+  <EditText
+    android:id="@+id/etUrl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:gravity="center"
+    android:hint="@string/edit_text_default_youtube_url"
+    android:imeOptions="actionDone"
+    android:importantForAutofill="no"
+    android:inputType="textUri"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+  <Button
+    android:id="@+id/btnPlayVideo"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/button_play_youtube_video" />
+</LinearLayout>

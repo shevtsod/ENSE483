@@ -9,8 +9,6 @@
   https://youtu.be/4NDwINudmDk?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
 
 - Modify [`lab2`](../lab2) source code.
-  - Display more sensor using Android sensors as described in
-    [Sensors Overview | Android Developers](https://developer.android.com/guide/topics/sensors/sensors_overview).
   - Implement passing information between activities.
     - In one activity, when a button is clicked, a YouTube URL is sent to
       another activity that plays the video at the URL.
@@ -27,3 +25,14 @@ Developed and built using
 
 UI design diagram created using [Krita](https://krita.org/) and available under
 [`./doc`](./doc).
+
+> **NOTE**
+>
+> In order to build and run this project, you must create an `apikey.properties` file in the root directory
+> of the project and follow the [official documentation](https://developers.google.com/youtube/android/player/register) to generate an API key to use for playing YouTube videos.
+>
+> Enter your API key as follows in `apikey.properties`:
+>
+> ```shell
+> YOUTUBE_API_KEY="[YOUR API KEY HERE]"
+> ```

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="author">Daniel Shevtsov (SID: 200351253)</string>
+  <string name="due_date">October 13, 2019</string>
+
+  <string name="fragment_home">Home</string>
+  <string name="fragment_first">First</string>
+  <string name="fragment_second">Second</string>
+
+  <string name="button_take_geo_photo">Take geo-tagged photo</string>
+  <string name="button_play_youtube_video">Play YouTube video at URL</string>
+
+  <string name="text_youtube_description">Enter a YouTube video URL and click on the button to play the video at that URL.</string>
+  <string name="text_youtube_url">youtu.be/</string>
+  <string name="edit_text_default_youtube_url">ihpG_NJ_T1g</string>
+</resources>

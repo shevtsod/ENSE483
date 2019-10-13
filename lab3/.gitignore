@@ -29,3 +29,13 @@
 .idea/dynamic.xml
 .idea/uiDesigner.xml
 .idea/assetWizardSettings.xml
+
+# Release APK
+/release
+
+# .properties configuration files
+apikey.properties
+
+# Krita files
+*.kra~
+*.png~
