@@ -28,8 +28,10 @@ UI design diagram created using [Krita](https://krita.org/) and available under
 
 > **NOTE**
 >
-> In order to build and run this project, you must create an `apikey.properties` file in the root directory
-> of the project and follow the [official documentation](https://developers.google.com/youtube/android/player/register) to generate an API key to use for playing YouTube videos.
+> In order to build and run this project, you must create an `apikey.properties`
+> file in the root directory of the project and follow the
+> [official documentation](https://developers.google.com/youtube/android/player/register)
+> to generate an API key to use for playing YouTube videos.
 >
 > Enter your API key as follows in `apikey.properties`:
 >
