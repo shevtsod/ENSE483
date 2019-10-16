@@ -1,6 +1,6 @@
 # ENSE 483
 
-My solutions to assignments and labs in ENSE 483 - Digital Wireless Systems,
+My solutions to assignments and labs in **ENSE 483 - Digital Wireless Systems**,
 Fall 2019.
 
 ## Overview
