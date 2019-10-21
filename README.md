@@ -8,3 +8,4 @@ Fall 2019.
 - [**Lab 1** - Android Intro](./lab1)
 - [**Lab 2** - Android UI](./lab2)
 - [**Lab 3** - Android Activities](./lab3)
+- [**Lab 4** - Phone & Text](./lab4)
