@@ -4,10 +4,6 @@
 
 ## Problem Statement
 
-- Watch tutorials 14 to 21 at:
-
-  https://youtu.be/4NDwINudmDk?list=PLgCYzUzKIBE8TUoCyjomGFqzTFcJ05OaC
-
 - Modify [`lab3`](../lab3) source code.
   - Add ability to upload IoT sensor data using SMS to a public or private
     avaiable server.
