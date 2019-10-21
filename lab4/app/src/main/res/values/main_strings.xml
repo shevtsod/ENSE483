@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="author">Daniel Shevtsov (SID: 200351253)</string>
+  <string name="due_date">October 21, 2019</string>
+
+  <string name="fragment_home">Home</string>
+  <string name="fragment_first">First</string>
+  <string name="fragment_second">Second</string>
+
+  <string name="fragment_first_description">Enter a phone number and click on the button below to send your device\'s current orientation to that number.</string>
+  <string name="fragment_first_et_phone_number_hint">16476605416</string>
+
+  <string name="fragment_second_description">Enter a phone number and click on the button below to call that number.</string>
+  <string name="fragment_second_et_phone_number_hint">0123456789</string>
+
+  <string name="button_submit">Submit</string>
+</resources>

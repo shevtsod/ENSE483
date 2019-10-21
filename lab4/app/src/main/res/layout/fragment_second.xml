@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp"
+  tools:context=".main.SecondFragment">
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/fragment_second_description" />
+
+  <EditText
+    android:id="@+id/etPhoneNumber"
+    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:digits="0123456789+"
+    android:gravity="center"
+    android:hint="@string/fragment_second_et_phone_number_hint"
+    android:imeOptions="actionGo"
+    android:inputType="phone"
+    android:maxLength="12"
+    android:textSize="36sp" />
+
+  <Button
+    android:id="@+id/btnSubmit"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/button_submit" />
+</LinearLayout>
