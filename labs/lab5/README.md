@@ -1,0 +1,28 @@
+# ENSE 483 - Lab 4 - Phone & Text
+
+![Demo](./assets/demo.gif)
+
+## Problem Statement
+
+1. Watch first 4 tutorials at:
+
+   https://www.youtube.com/watch?v=y8R2C86BIUc&list=PLgCYzUzKIBE8KHMzpp6JITZ2JxTgWqDH2
+
+2. Draw UML class and sequence diagrams of the code that was implemented.
+3. Modify the code three times:
+   1. Have the main activity start other activities and use only one
+      `onActivityResult()` method to handle their results.
+   2. Have the main activity contain many `BroadcastReceiver`s, each listening
+      to one Android system event.
+   3. Have the main activity contain one `BroadcastReceiver` that listens to
+      many Android system events.
+
+## Developing
+
+Forked from https://github.com/mitchtabian/EnableBluetooth.
+
+Developed and built using
+[Android Studio](https://developer.android.com/studio).
+
+UML diagrams created using [UMLet](https://www.umlet.com/) and available under
+[`./doc`](./doc).
