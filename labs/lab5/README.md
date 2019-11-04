@@ -1,4 +1,4 @@
-# ENSE 483 - Lab 4 - Phone & Text
+# ENSE 483 - Lab 5 - Bluetooth Programming
 
 ![Demo](./assets/demo.gif)
 
