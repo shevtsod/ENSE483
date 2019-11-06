@@ -10,7 +10,7 @@ docker container run \
   -d \
   -e MQTT_PUB_TOPIC="some/topic" \
   --name some-sensor
-  @shevtsod/ense483-project-sensor
+  shevtsod/ense483-project-sensor
 ```
 
 ## Environment Variables
