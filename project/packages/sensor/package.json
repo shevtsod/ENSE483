@@ -1,0 +1,21 @@
+{
+  "name": "sensor",
+  "author": "Daniel Shevtsov <daniel.shevtsov@gmail.com>",
+  "license": "ISC",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "eslint": "eslint ."
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mqtt": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.4"
+  }
+}
