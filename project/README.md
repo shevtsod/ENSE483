@@ -2,6 +2,6 @@
 
 ## Requirements
 
-- Docker Engine [17.13.0+](https://docs.docker.com/engine/release-notes/)
+- Docker Engine [1.13.0+](https://docs.docker.com/engine/release-notes/)
 
 🚧 WIP 🚧

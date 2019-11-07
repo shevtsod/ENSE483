@@ -9,3 +9,31 @@ services:
       - "9001:9001"
     volumes:
       - ./packages/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+  mariadb:
+    image: jsurf/rpi-mariadb:stretch
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: project
+      MYSQL_USER: project_admin
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+  influxdb:
+    image: influxdb:1.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    environment:
+      INFLUXDB_DB: project
+      INFLUXDB_HTTP_AUTH_ENABLED: "true"
+      INFLUX_USER: project_admin
+      INFLUX_USER_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  mariadb_data:
+  influxdb_data:
