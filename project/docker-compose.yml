@@ -1,17 +1,24 @@
 version: "3.0"
 
 services:
+  # Eclipse - Mosquitto MQTT server
+  # https://hub.docker.com/_/eclipse-mosquitto
   mosquitto:
     image: eclipse-mosquitto:1.6
     container_name: mosquitto
+    restart: always
     ports:
       - "1883:1883"
       - "9001:9001"
     volumes:
       - ./packages/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  # MariaDB - Relational database
+  # https://hub.docker.com/_/mariadb
   mariadb:
-    image: jsurf/rpi-mariadb:stretch
+    image: mariadb:10.1
     container_name: mariadb
+    restart: always
     ports:
       - "3306:3306"
     volumes:
@@ -21,9 +28,13 @@ services:
       MYSQL_DATABASE: project
       MYSQL_USER: project_admin
       MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  # InfluxDB - Time series database
+  # https://hub.docker.com/_/influxdb
   influxdb:
     image: influxdb:1.7
     container_name: influxdb
+    restart: always
     ports:
       - "8086:8086"
     volumes:
@@ -31,6 +42,7 @@ services:
     environment:
       INFLUXDB_DB: project
       INFLUXDB_HTTP_AUTH_ENABLED: "true"
+      INFLUXDB_ADMIN_USER: "root"
       INFLUXDB_USER: project_admin
       INFLUXDB_USER_PASSWORD: ${DB_PASSWORD}
 
