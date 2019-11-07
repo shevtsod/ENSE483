@@ -5,20 +5,22 @@ const env = require('./env');
 const { logger, generateRandomNumber } = require('./util');
 
 const mqttUrl = `mqtt://${env.MQTT_HOST}:${env.MQTT_PORT}`;
+// MQTT server connection timeout, in milliseconds
+const mqttClientConnectTimeout = 10000;
+
 // Create a client and connect to the MQTT server
 const mqttClient = mqtt.connect(mqttUrl);
 
 // If timeout expires and connection was not established, shutdown
-const mqttClientConnectTimeout = setTimeout(() => {
+const mqttClientConnectTimeoutID = setTimeout(() => {
   logger.error(`Could not connect to ${mqttUrl}!`);
-
   process.exit(1);
-}, 10000);
+}, mqttClientConnectTimeout);
 
 // Handle successful MQTT connection event
 mqttClient.on('connect', () => {
-  // Clear the timeout to shutdown if connection cannot be established
-  clearTimeout(mqttClientConnectTimeout);
+  // Clear the timeout to shutdown if connection could not have been established
+  clearTimeout(mqttClientConnectTimeoutID);
 
   logger.log(`Connected to ${mqttUrl}`);
 
@@ -28,7 +30,13 @@ mqttClient.on('connect', () => {
       data: generateRandomNumber(env.VALUE_MIN, env.VALUE_MAX),
     });
 
-    mqttClient.publish(env.MQTT_PUB_TOPIC, payload);
+    mqttClient.publish(env.MQTT_PUB_TOPIC, payload, (err) => {
+      if (err) {
+        logger.error(`Error publishing payload:\n  ${payload}\n  ${err}`);
+      } else {
+        logger.log(`Published payload:\n  ${payload}`);
+      }
+    });
   }, env.MQTT_PUB_INTERVAL);
 });
 

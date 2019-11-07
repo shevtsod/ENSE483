@@ -48,3 +48,11 @@ Default: `0`
 Maximum value for randomized simulated sensor reading.
 
 Default: `1`
+
+## Developing
+
+To develop locally:
+
+```shell
+npm run dev
+```

@@ -19,7 +19,7 @@ function formatLogMessage(type, message) {
   });
   const ms = date.getMilliseconds();
 
-  return `[${localeString}.${ms}] ${type} | ${message}\n`;
+  return `${localeString}.${ms} [${type.toUpperCase()}] ${message}\n`;
 }
 
 /**
