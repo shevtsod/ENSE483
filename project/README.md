@@ -1,5 +1,12 @@
 # ENSE 483 - Project - Pig Farm Management IoT System
 
+This system implements **Meat UC5.1: Pig Farm Management** as specified in the
+_Internet of Food & Farm 2020 Use Case Architectures and Overview of the Related
+IoT Systems_ document. This system automates management of pig farms using
+sensors that report various parameters of each pig’s health to supply decision
+makers such as farmers, slaughterhouse workers, and experts with relevant and
+actionable information.
+
 ## Requirements
 
 - Docker Engine [1.13.0+](https://docs.docker.com/engine/release-notes/)

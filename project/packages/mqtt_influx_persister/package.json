@@ -1,5 +1,5 @@
 {
-  "name": "sensor",
+  "name": "mqtt_influx_persister",
   "author": "Daniel Shevtsov <daniel.shevtsov@gmail.com>",
   "license": "ISC",
   "version": "1.0.0",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "influx": "^5.5.0",
     "mqtt": "^3.0.0"
   },
   "devDependencies": {

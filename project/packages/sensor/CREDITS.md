@@ -1,4 +1,4 @@
-# CREDITS
+# Credits
 
 ## [dotenv](https://www.npmjs.com/package/dotenv)
 
