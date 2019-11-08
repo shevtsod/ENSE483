@@ -25,6 +25,13 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 > devices. For example, a different MariaDB image is specified as the official
 > image does not support the Raspberry Pi/ARMHF architecture.
 
+## Environment Variables
+
+### `DB_PASSWORD`
+
+**Required**. Password for the user account with read/write permissions that is
+created in each database used by the system.
+
 ## Developing
 
 To develop locally:
