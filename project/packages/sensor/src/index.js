@@ -31,10 +31,14 @@ mqttClient.on('connect', () => {
     });
 
     mqttClient.publish(env.MQTT_PUB_TOPIC, payload, (err) => {
+      const log = `${err ? 'Error publishing' : 'Published'} message:\n`
+        + `  TOPIC:   "${env.MQTT_PUB_TOPIC}"\n`
+        + `  PAYLOAD: ${payload}`;
+
       if (err) {
-        logger.error(`Error publishing payload:\n  ${payload}\n  ${err}`);
+        logger.error(log);
       } else {
-        logger.log(`Published payload:\n  ${payload}`);
+        logger.log(log);
       }
     });
   }, env.MQTT_PUB_INTERVAL);

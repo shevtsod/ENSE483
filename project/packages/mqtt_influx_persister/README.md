@@ -1,3 +1,0 @@
-# MQTT Influx Persister
-
-🚧 WIP 🚧

@@ -40,12 +40,26 @@ services:
     volumes:
       - influxdb_data:/var/lib/influxdb
     environment:
-      INFLUXDB_DB: project
       INFLUXDB_HTTP_AUTH_ENABLED: "true"
-      INFLUXDB_ADMIN_USER: "root"
+      INFLUXDB_ADMIN_USER: root
+      INFLUXDB_DB: project
       INFLUXDB_USER: project_admin
       INFLUXDB_USER_PASSWORD: ${DB_PASSWORD}
 
+  # MQTT - InfluxDB Persister
+  mqtt-influx-persister:
+    build: ./packages/mqtt-influx-persister
+    image: mqtt-influx-persister
+    container_name: mqtt-influx-persister
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      INFLUX_HOST: influxdb
+      INFLUX_DB: project
+      INFLUX_USERNAME: project_admin
+      INFLUX_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - influxdb
 volumes:
   mariadb_data:
   influxdb_data:
