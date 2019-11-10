@@ -59,6 +59,7 @@ services:
       INFLUX_DB: project
       INFLUX_USERNAME: project_admin
       INFLUX_PASSWORD: ${DB_PASSWORD}
+
 volumes:
   mariadb_data:
   influxdb_data:

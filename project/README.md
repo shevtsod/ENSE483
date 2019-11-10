@@ -17,7 +17,12 @@ To deploy in production (i.e., on a Raspberry Pi device):
 
 ```shell
 export DB_PASSWORD="my_password"
+
+# Start services
 docker-compose up
+
+# Stop services
+docker-compose down
 ```
 
 ## Environment Variables
@@ -33,7 +38,12 @@ To develop locally:
 
 ```shell
 export DB_PASSWORD="my_password"
+
+# Start services
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+
+# Stop services
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 ```
 
 > **NOTE:**

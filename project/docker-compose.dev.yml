@@ -26,7 +26,6 @@ services:
       VALUE_MAX: 42
 
   sensor1:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -35,9 +34,10 @@ services:
       MQTT_PUB_INTERVAL: 20000
       VALUE_MIN: 38
       VALUE_MAX: 40
+    depends_on:
+      - sensor0
 
   sensor2:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -46,9 +46,10 @@ services:
       MQTT_PUB_INTERVAL: 60000
       VALUE_MIN: 142
       VALUE_MAX: 144
+    depends_on:
+      - sensor0
 
   sensor3:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -57,3 +58,5 @@ services:
       MQTT_PUB_INTERVAL: 60000
       VALUE_MIN: 130
       VALUE_MAX: 132
+    depends_on:
+      - sensor0
