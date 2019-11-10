@@ -50,6 +50,7 @@ services:
 
   # MQTT - InfluxDB Persister
   mqtt-influx-persister:
+    build: ./packages/mqtt-influx-persister
     image: shevtsod/ense483-project-mqtt-influx-persister
     container_name: mqtt-influx-persister
     restart: always

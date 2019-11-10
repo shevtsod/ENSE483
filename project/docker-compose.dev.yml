@@ -6,11 +6,6 @@ services:
   mariadb:
     image: mariadb:10.1
 
-  # MQTT - InfluxDB Persister
-  # NOTE: Build image locally from repository
-  mqtt-influx-persister:
-    build: ./packages/mqtt-influx-persister
-
   # Sensor
   # Start a few sensors for testing purposes
   # NOTE: Build image locally from repository
