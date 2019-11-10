@@ -14,9 +14,11 @@ services:
       - ./packages/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
   # MariaDB - Relational database
-  # https://hub.docker.com/_/mariadb
+  # NOTE: Version specific to Raspberry Pi, as the official mariadb image does
+  #       not support the ARMHF arhitecture.
+  # https://hub.docker.com/r/jsurf/rpi-mariadb/
   mariadb:
-    image: mariadb:10.1
+    image: jsurf/rpi-mariadb:stretch
     container_name: mariadb
     restart: always
     ports:
@@ -48,8 +50,7 @@ services:
 
   # MQTT - InfluxDB Persister
   mqtt-influx-persister:
-    build: ./packages/mqtt-influx-persister
-    image: mqtt-influx-persister
+    image: shevtsod/ense483-project-mqtt-influx-persister
     container_name: mqtt-influx-persister
     restart: always
     environment:
@@ -58,8 +59,6 @@ services:
       INFLUX_DB: project
       INFLUX_USERNAME: project_admin
       INFLUX_PASSWORD: ${DB_PASSWORD}
-    depends_on:
-      - influxdb
 volumes:
   mariadb_data:
   influxdb_data:

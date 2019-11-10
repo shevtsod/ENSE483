@@ -16,14 +16,9 @@ actionable information.
 To deploy in production (i.e., on a Raspberry Pi device):
 
 ```shell
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+export DB_PASSWORD="my_password"
+docker-compose up
 ```
-
-> **NOTE:**
->
-> The `docker-compose.prod.yml` file contains overrides specific to Raspberry Pi
-> devices. For example, a different MariaDB image is specified as the official
-> image does not support the Raspberry Pi/ARMHF architecture.
 
 ## Environment Variables
 
@@ -37,7 +32,12 @@ created in each database used by the system.
 To develop locally:
 
 ```shell
-docker-compose up --build
+export DB_PASSWORD="my_password"
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
-🚧 WIP 🚧
+> **NOTE:**
+>
+> The `docker-compose.dev.yml` file contains overrides specific to the
+> development environment. Modifications include building certain images locally
+> and selecting different variants of third-party images.

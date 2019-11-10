@@ -1,31 +1,16 @@
 require('dotenv').config();
-const mqtt = require('mqtt');
 
 const env = require('./env');
 const { logger, generateRandomNumber } = require('./util');
+const mqttClient = require('./mqttClient');
 
-const mqttUrl = `mqtt://${env.MQTT_HOST}:${env.MQTT_PORT}`;
-// MQTT server connection timeout, in milliseconds
-const mqttClientConnectTimeout = 10000;
+let publishIntervalID = null;
 
-// Create a client and connect to the MQTT server
-const mqttClient = mqtt.connect(mqttUrl);
-
-// If timeout expires and connection was not established, shutdown
-const mqttClientConnectTimeoutID = setTimeout(() => {
-  logger.error(`Could not connect to ${mqttUrl}!`);
-  process.exit(1);
-}, mqttClientConnectTimeout);
-
-// Handle successful MQTT connection event
+// When connected, start publishing random measurements at the specified interval
 mqttClient.on('connect', () => {
-  // Clear the timeout to shutdown if connection could not have been established
-  clearTimeout(mqttClientConnectTimeoutID);
+  if (publishIntervalID) return;
 
-  logger.log(`Connected to ${mqttUrl}`);
-
-  // Start publishing random measurements at the specified interval
-  setInterval(() => {
+  publishIntervalID = setInterval(() => {
     const payload = JSON.stringify({
       data: generateRandomNumber(env.VALUE_MIN, env.VALUE_MAX),
     });
@@ -42,6 +27,12 @@ mqttClient.on('connect', () => {
       }
     });
   }, env.MQTT_PUB_INTERVAL);
+});
+
+// When disconnected, stop publishing measurements
+mqttClient.on('close', () => {
+  clearInterval(publishIntervalID);
+  publishIntervalID = null;
 });
 
 // Handle shutdown events

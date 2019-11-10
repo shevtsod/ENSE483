@@ -1,8 +1,0 @@
-version: "3.0"
-
-services:
-  # MariaDB - Relational database
-  # NOTE: Version specific to Raspberry Pi, as the official mariadb image does
-  #       not support the ARMHF arhitecture.
-  mariadb:
-    image: jsurf/rpi-mariadb:stretch

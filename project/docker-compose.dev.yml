@@ -1,0 +1,59 @@
+version: "3.0"
+
+services:
+  # MariaDB - Relational database
+  # https://hub.docker.com/_/mariadb
+  mariadb:
+    image: mariadb:10.1
+
+  # MQTT - InfluxDB Persister
+  # NOTE: Build image locally from repository
+  mqtt-influx-persister:
+    build: ./packages/mqtt-influx-persister
+
+  # Sensor
+  # Start a few sensors for testing purposes
+  # NOTE: Build image locally from repository
+  sensor0:
+    build: ./packages/sensor
+    image: shevtsod/ense483-project-sensor
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PUB_TOPIC: temperature/0
+      MQTT_PUB_INTERVAL: 20000
+      VALUE_MIN: 40
+      VALUE_MAX: 42
+
+  sensor1:
+    build: ./packages/sensor
+    image: shevtsod/ense483-project-sensor
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PUB_TOPIC: temperature/1
+      MQTT_PUB_INTERVAL: 20000
+      VALUE_MIN: 38
+      VALUE_MAX: 40
+
+  sensor2:
+    build: ./packages/sensor
+    image: shevtsod/ense483-project-sensor
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PUB_TOPIC: weight/0
+      MQTT_PUB_INTERVAL: 60000
+      VALUE_MIN: 142
+      VALUE_MAX: 144
+
+  sensor3:
+    build: ./packages/sensor
+    image: shevtsod/ense483-project-sensor
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PUB_TOPIC: weight/1
+      MQTT_PUB_INTERVAL: 60000
+      VALUE_MIN: 130
+      VALUE_MAX: 132
