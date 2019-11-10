@@ -13,4 +13,4 @@ RUN npm ci --only=production
 COPY . .
 
 # Start app
-CMD ["npm", "start"]
+CMD ["node ", "src/index.js"]
