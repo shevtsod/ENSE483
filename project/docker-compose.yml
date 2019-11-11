@@ -11,17 +11,14 @@ services:
       - ./packages/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
   # MariaDB - Relational database
-  # NOTE: Version specific to Raspberry Pi, as the official mariadb image does
-  #       not support the ARMHF arhitecture.
   # https://hub.docker.com/r/linuxserver/mariadb
   mariadb:
-    image: linuxserver/mariadb:arm32v7-110.4.10mariabionic-ls42
+    image: linuxserver/mariadb:110.4.10mariabionic-ls42
     container_name: mariadb
     restart: always
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - mariadb_data:/config
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: project
       MYSQL_USER: project_admin
       MYSQL_PASSWORD: ${DB_PASSWORD}

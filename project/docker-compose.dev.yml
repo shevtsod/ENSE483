@@ -1,10 +1,24 @@
 version: "3.0"
 
 services:
+  # Eclipse - Mosquitto MQTT server
+  # https://hub.docker.com/_/eclipse-mosquitto
+  mosquitto:
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
   # MariaDB - Relational database
-  # https://hub.docker.com/_/mariadb
+  # https://hub.docker.com/r/linuxserver/mariadb
   mariadb:
-    image: mariadb:10.4
+    ports:
+      - "3306:3306"
+
+  # InfluxDB - Time series database
+  # https://hub.docker.com/_/influxdb
+  influxdb:
+    ports:
+      - "8086:8086"
 
   # Sensor
   # Start a few sensors for testing purposes
