@@ -4,7 +4,7 @@ services:
   # MariaDB - Relational database
   # https://hub.docker.com/_/mariadb
   mariadb:
-    image: mariadb:10.1
+    image: mariadb:10.4
 
   # Sensor
   # Start a few sensors for testing purposes

@@ -7,22 +7,17 @@ services:
     image: eclipse-mosquitto:1.6
     container_name: mosquitto
     restart: always
-    ports:
-      - "1883:1883"
-      - "9001:9001"
     volumes:
       - ./packages/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
   # MariaDB - Relational database
   # NOTE: Version specific to Raspberry Pi, as the official mariadb image does
   #       not support the ARMHF arhitecture.
-  # https://hub.docker.com/r/jsurf/rpi-mariadb/
+  # https://hub.docker.com/r/linuxserver/mariadb
   mariadb:
-    image: jsurf/rpi-mariadb:stretch
+    image: linuxserver/mariadb:arm32v7-110.4.10mariabionic-ls42
     container_name: mariadb
     restart: always
-    ports:
-      - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
     environment:
@@ -37,8 +32,6 @@ services:
     image: influxdb:1.7
     container_name: influxdb
     restart: always
-    ports:
-      - "8086:8086"
     volumes:
       - influxdb_data:/var/lib/influxdb
     environment:
