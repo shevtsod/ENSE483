@@ -1,7 +1,5 @@
 # ENSE 483 - Lab 5 - Bluetooth Programming
 
-![Demo](./assets/demo.gif)
-
 ## Problem Statement
 
 1. Watch first 4 tutorials at:

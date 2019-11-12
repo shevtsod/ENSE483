@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="author">Daniel Shevtsov (SID: 200351253)</string>
+  <string name="due_date">November 13, 2019</string>
+
+  <string name="button_submit">Execute Program</string>
+</resources>

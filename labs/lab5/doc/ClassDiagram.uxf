@@ -1,29 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>15</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>630</y>
-      <w>615</w>
-      <h>135</h>
+      <x>924</x>
+      <y>357</y>
+      <w>329</w>
+      <h>294</h>
     </coordinates>
     <panel_attributes>com.example.user.bluetooth_howtopair::MainActivity
 --
 _-TAG: String_
+-mBluetoothAdapter: BluetoothAdapter
+-btnEnableDisable_Discoverable: Button
++mBTDevices: ArrayList&lt;BluetoothDevice&gt;
++mDeviceListAdapter: DeviceListAdapter
+-lvNewDevices: ListView
+-mBroadcastReceiver1: BroadcastReceiver
+-mBroadcastReceiver2: BroadcastReceiver
+-mBroadcastReceiver3: BroadcastReceiver
+-mBroadcastReceiver4: BroadcastReceiver
 --
-#onCreate(savedInstanceState: Bundle)
--toastMessage(message: String)</panel_attributes>
+#onCreate(savedInstanceState: Bundle): void
+#onDestroy(): void
++startActivity(intent: Intent): void
++setContentView(view: View): void
++enableDisableBT(): void
++enableDisable_Discoverable(view: View): void
++btnDiscover(view: View): void
+-checkBTPermissions(): void
++onItemClick(adapterView: AdapterView, view: View, i: int, l: long): void
++registerReceiver(receiver: BroadcastReceiver, filter: IntentFilter): void
++unregisterReceiver(receiver: BroadcastReceiver): void
++checkSelfPermission(permission: String): int
++requestPermissions(permissions: String[], requestCode: int): void
+...</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>435</x>
-      <y>465</y>
-      <w>435</w>
-      <h>45</h>
+      <x>847</x>
+      <y>287</y>
+      <w>217</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>android.support.v7.app::AppCompatActivity</panel_attributes>
     <additional_attributes/>
@@ -31,120 +52,77 @@ _-TAG: String_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>645</x>
-      <y>495</y>
-      <w>45</w>
-      <h>165</h>
+      <x>945</x>
+      <y>301</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1380</x>
-      <y>720</y>
-      <w>240</w>
-      <h>45</h>
+      <x>819</x>
+      <y>756</y>
+      <w>203</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>android.widget::Button</panel_attributes>
+    <panel_attributes>android.widget::Button
+--
+--
++setOnClickListener(l: onClickListener): void
+...</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>630</y>
-      <w>240</w>
-      <h>45</h>
+      <x>693</x>
+      <y>861</y>
+      <w>140</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>android.widget::Toast</panel_attributes>
+    <panel_attributes>android.view::View
+--
+--
++findViewById(id: int): View
+...</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1380</x>
-      <y>630</y>
-      <w>240</w>
-      <h>45</h>
+      <x>1141</x>
+      <y>833</y>
+      <w>154</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>android.view::View</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>330</x>
-      <y>690</y>
-      <w>180</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>android.util::Log</panel_attributes>
+    <panel_attributes>android.util::Log
+--
+--
++d(tag: String, msg: String): int
+...</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1485</x>
-      <y>660</y>
-      <w>45</w>
-      <h>90</h>
+      <x>756</x>
+      <y>805</y>
+      <w>175</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1230</x>
-      <y>630</y>
-      <w>180</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1230</x>
-      <y>720</y>
-      <w>180</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>495</x>
-      <y>630</y>
-      <w>165</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>495</x>
-      <y>690</y>
-      <w>165</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;230.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>450</y>
-      <w>495</w>
-      <h>60</h>
+      <x>1092</x>
+      <y>287</y>
+      <w>245</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 android.widget.AdapterView::OnItemClickListener</panel_attributes>
@@ -153,12 +131,505 @@ android.widget.AdapterView::OnItemClickListener</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1200</x>
-      <y>495</y>
-      <w>45</w>
-      <h>165</h>
+      <x>1204</x>
+      <y>308</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1386</x>
+      <y>357</y>
+      <w>259</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>android.bluetooth::BluetoothAdapter
+--
+_+EXTRA_STATE: String_
+_+EXTRA_SCAN_MODE: String_
+_+ACTION_REQUEST_ENABLE_
+_+ACTION_REQUEST_DISCOVERABLE_
+_+ACTION_STATE_CHANGED: String_
+_+ACTION_SCAN_MODE_CHANGED: String_
+_+STATE_OFF: int_
+_+STATE_TURNING_OFF: int_
+_+STATE_ON: int_
+_+STATE_TURNING_ON: int_
+_+STATE_ERROR: int_
+_+EXTRA_SCAN_MODE: String_
+_+SCAN_MODE_CONNECTABLE_DISCOVERABLE: int_
+_+SCAN_MODE_CONNECTABLE: int_
+_+SCAN_MODE_NONE: int_
+_+STATE_CONNECTING: int_
+_+STATE_CONNECTED: int_
+...
+--
+_+getDefaultAdapter(): BluetoothAdapter_
++isEnabled(): boolean
++disable(): boolean
++startDiscovery(): boolean
++isDiscovering(): boolean
++cancelDiscovery(): boolean
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>714</x>
+      <y>420</y>
+      <w>168</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>java.util::ArrayList&lt;BluetoothDevice&gt;
+--
+--
++ArrayList()
++get(index: int): BluetoothDevice
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>875</x>
+      <y>441</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>238</x>
+      <y>357</y>
+      <w>427</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>com.example.user.bluetooth_howtopair::DeviceListAdapter
+--
+-mLayoutInflater: LayoutInflater
+-mDevices: ArrayList&lt;BluetoothDevice&gt;
+-mViewResourceId: int
+--
+_+DeviceListAdapter(context: Context, tvResourceId: int, devices: ArrayList&lt;BluetoothDevice&gt;)_
++getView(position: int, convertView: View, parent: ViewGroup): View
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>329</x>
+      <y>287</y>
+      <w>238</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>android.widget::ArrayAdapter&lt;BluetoothDevice&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>301</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>511</y>
+      <w>189</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>android.bluetooth::BluetoothDevice
+--
+_+EXTRA_DEVICE: String_
+_+ACTION_FOUND: String_
+_+ACTION_BOND_STATE_CHANGED_
+_+BOND_BONDED: int_
+_+BOND_BONDING_
+_+BOND_NONE_
+--
+getName(): String
+getAddress(): String
+createBond(): boolean
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>714</y>
+      <w>175</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>android.widget::TextView
+--
+--
++setText(text: CharSequence): void
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>763</y>
+      <w>21</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>609</x>
+      <y>462</y>
+      <w>119</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;150.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>441</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>637</x>
+      <y>462</y>
+      <w>77</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>539</y>
+      <w>56</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1211</x>
+      <y>644</y>
+      <w>21</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>749</y>
+      <w>210</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>android.view::LayoutInflater
+--
+--
++inflate(resource: int, root: ViewGroup): View
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>749</y>
+      <w>175</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>android.content::Context
+--
+--
++getSystemService(s: String): Object
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>462</y>
+      <w>21</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>245</x>
+      <y>462</y>
+      <w>21</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>588</x>
+      <y>462</y>
+      <w>119</w>
+      <h>441</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;610.0;150.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1414</x>
+      <y>714</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>android.content::BroadcastReceiver
+--
+--
+_+BroadcastReceiver()_
++onReceive(context: Context, intent: Intent): void
++getSystemService(s: String): Object
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>378</y>
+      <w>154</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>644</y>
+      <w>77</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>371</y>
+      <w>280</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>380.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1015</x>
+      <y>910</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>android.widget::ListView
+--
+--
++setAdapter(adapter: ListAdapter): void
++setOnItemClickListener(listener: OnItemClickListener): void
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>889</y>
+      <w>203</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1106</x>
+      <y>644</y>
+      <w>21</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>812</y>
+      <w>224</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>android.content::Intent
+--
+--
++getAction(): String
++getIntExtra(name: String, defaultValue: int)
++getParcelableExtra(name: String): T
++putExtra(name: String, value: int): Intent
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1526</x>
+      <y>784</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1526</x>
+      <y>658</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>644</y>
+      <w>644</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;40.0;740.0;40.0;740.0;160.0;900.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>924</y>
+      <w>224</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>android.content::IntentFilter
+--
+--
+_+IntentFilter(action: String)_
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>406</y>
+      <w>189</w>
+      <h>560</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;170.0;10.0;170.0;780.0;250.0;780.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>1001</y>
+      <w>224</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>android.os.Build::VERSION
+--
+_+SDK_INT: int_
+...
+--
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1421</x>
+      <y>1085</y>
+      <w>224</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>android.os.Build::VERSION_CODES
+--
+_+LOLLIPOP: int_
+_+JELLY_BEAN_MR2: int_
+...
+--
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>427</y>
+      <w>189</w>
+      <h>616</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;860.0;250.0;860.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>448</y>
+      <w>189</w>
+      <h>686</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;10.0;110.0;960.0;250.0;960.0</additional_attributes>
   </element>
 </diagram>
