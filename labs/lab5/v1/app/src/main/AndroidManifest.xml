@@ -16,7 +16,7 @@
     android:theme="@style/AppTheme"
     tools:ignore="GoogleAppIndexingWarning">
 
-    <activity android:name="com.shevtsod.lab5.MainActivity">
+    <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +24,11 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".FirstActivity" />
+
+    <activity android:name=".SecondActivity" />
+
+    <activity android:name=".ThirdActivity" />
   </application>
 
 </manifest>

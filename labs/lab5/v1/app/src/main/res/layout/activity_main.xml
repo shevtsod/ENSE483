@@ -47,37 +47,23 @@
   </LinearLayout>
 
   <Button
-    android:id="@+id/btnONOFF"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/app_info"
-    android:layout_alignParentStart="true"
-    android:text="ON/OFF" />
-
-  <Button
-    android:id="@+id/btnDiscoverable_on_off"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/app_info"
-    android:layout_toStartOf="@+id/btnFindUnpairedDevices"
-    android:layout_toEndOf="@+id/btnONOFF"
-    android:onClick="btnEnableDisable_Discoverable"
-    android:text="Enable Discoverable" />
-
-  <Button
-    android:id="@+id/btnFindUnpairedDevices"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/app_info"
-    android:layout_alignParentEnd="true"
-    android:onClick="btnDiscover"
-    android:text="Discover" />
-
-  <ListView
-    android:id="@+id/lvNewDevices"
+    android:id="@+id/btnStartFirstActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/btnDiscoverable_on_off" />
+    android:layout_height="wrap_content"
+    android:layout_below="@id/app_info"
+    android:text="Start FirstActivity" />
 
+  <Button
+    android:id="@+id/btnStartSecondActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/btnStartFirstActivity"
+    android:text="Start SecondActivity" />
 
+  <Button
+    android:id="@+id/btnStartThirdActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/btnStartSecondActivity"
+    android:text="Start ThirdActivity" />
 </RelativeLayout>
