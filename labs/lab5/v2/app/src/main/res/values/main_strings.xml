@@ -4,4 +4,6 @@
   <string name="due_date">November 13, 2019</string>
 
   <string name="button_submit">Execute Program</string>
+
+  <string name="description">Sends a toast when the battery level or airplane mode state change.</string>
 </resources>

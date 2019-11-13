@@ -1,5 +1,9 @@
 # ENSE 483 - Lab 5 - Bluetooth Programming
 
+| [v1](./v1)                       | [v2](./v2)                       | [v3](./v3)                       |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| ![demo v1](./assets/demo_v1.gif) | ![demo v2](./assets/demo_v2.gif) | ![demo v3](./assets/demo_v3.gif) |
+
 ## Problem Statement
 
 1. Watch first 4 tutorials at:

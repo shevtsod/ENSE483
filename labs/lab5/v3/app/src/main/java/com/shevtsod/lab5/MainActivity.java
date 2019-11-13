@@ -214,6 +214,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
   public void btnEnableDisable_Discoverable() {
+    if (mBluetoothAdapter == null) {
+      Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+      return;
+    }
+
     Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
 
     Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
@@ -222,6 +227,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
   }
 
   public void btnDiscover() {
+    if (mBluetoothAdapter == null) {
+      Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+      return;
+    }
+
     Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
 
     if (mBluetoothAdapter.isDiscovering()) {
