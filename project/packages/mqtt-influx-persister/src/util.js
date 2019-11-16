@@ -6,20 +6,7 @@
  * @return {string} Formatted message
  */
 function formatLogMessage(type, message) {
-  // Append current date and time to the log message
-  const date = new Date();
-  const localeString = date.toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    hour12: false,
-    minute: '2-digit',
-    second: '2-digit',
-  });
-  const ms = date.getMilliseconds();
-
-  return `${localeString}.${ms} [${type.toUpperCase()}] ${message}\n`;
+  return `${new Date().toISOString()} [${type}]\t${message}\n`;
 }
 
 /**
@@ -31,8 +18,8 @@ exports.logger = {
    *
    * @param message {string} Message to be logged
    */
-  log: (message) => {
-    process.stdout.write(formatLogMessage('INFO', message));
+  info: (message) => {
+    process.stdout.write(formatLogMessage('info', message));
   },
 
   /**
@@ -41,7 +28,7 @@ exports.logger = {
    * @param message {string} Message to be logged
    */
   error: (message) => {
-    process.stderr.write(formatLogMessage('ERROR', message));
+    process.stderr.write(formatLogMessage('error', message));
   },
 };
 

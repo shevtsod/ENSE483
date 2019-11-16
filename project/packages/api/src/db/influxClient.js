@@ -1,8 +1,7 @@
 const influx = require('influx');
 
-const env = require('./env');
+const env = require('../env');
 
-// Create InfluxDB client and wire it to the given server
 module.exports = new influx.InfluxDB({
   host: env.INFLUX_HOST,
   port: env.INFLUX_PORT,
