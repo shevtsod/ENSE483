@@ -41,7 +41,7 @@ services:
     restart: always
     environment:
       MQTT_HOST: mosquitto
-      MQTT_PUB_TOPIC: weight-0
+      MQTT_PUB_TOPIC: weight/0
       MQTT_PUB_INTERVAL: 60000
       VALUE_MIN: 140
       VALUE_MAX: 142
@@ -53,7 +53,7 @@ services:
     restart: always
     environment:
       MQTT_HOST: mosquitto
-      MQTT_PUB_TOPIC: weight-1
+      MQTT_PUB_TOPIC: weight/1
       MQTT_PUB_INTERVAL: 60000
       VALUE_MIN: 162
       VALUE_MAX: 166
@@ -65,7 +65,7 @@ services:
     restart: always
     environment:
       MQTT_HOST: mosquitto
-      MQTT_PUB_TOPIC: weight-2
+      MQTT_PUB_TOPIC: weight/2
       MQTT_PUB_INTERVAL: 60000
       VALUE_MIN: 152
       VALUE_MAX: 156
