@@ -13,7 +13,6 @@ services:
       VALUE_MAX: 42
 
   sensor-temperature-1:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -26,7 +25,6 @@ services:
       - sensor-temperature-0
 
   sensor-temperature-2:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -39,7 +37,6 @@ services:
       - sensor-temperature-0
 
   sensor-weight-0:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -52,7 +49,6 @@ services:
       - sensor-temperature-0
 
   sensor-weight-1:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
@@ -65,7 +61,6 @@ services:
       - sensor-temperature-0
 
   sensor-weight-2:
-    build: ./packages/sensor
     image: shevtsod/ense483-project-sensor
     restart: always
     environment:
