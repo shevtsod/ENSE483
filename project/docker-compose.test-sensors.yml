@@ -11,8 +11,6 @@ services:
       MQTT_PUB_INTERVAL: 20000
       VALUE_MIN: 40
       VALUE_MAX: 42
-    depends_on:
-      - sensor-temperature-0
 
   sensor-temperature-1:
     build: ./packages/sensor
