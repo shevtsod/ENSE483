@@ -40,10 +40,18 @@ To develop locally:
 export DB_PASSWORD="my_password"
 
 # Start services
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+docker-compose \
+  -f docker-compose.yml \
+  -f docker-compose.dev.yml \
+  -f docker-compose.test-sensors.yml \
+  up -d --build
 
 # Stop services
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
+docker-compose \
+  -f docker-compose.yml \
+  -f docker-compose.dev.yml \
+  -f docker-compose.test-sensors.yml \
+  down -v
 ```
 
 > **NOTE:**
