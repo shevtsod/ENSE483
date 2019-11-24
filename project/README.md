@@ -32,7 +32,7 @@ docker-compose down
 
 ### `DB_PASSWORD`
 
-**Required**. Password for the user account with read/write permissions that is
+**Required.** Password for the user account with read/write permissions that is
 created in each database used by the system.
 
 ## Developing

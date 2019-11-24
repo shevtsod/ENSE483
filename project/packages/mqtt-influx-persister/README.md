@@ -34,7 +34,7 @@ Default: `1883`
 
 Host of InfluxDB server to connect to.
 
-Default: `127.0.0.1`
+Default: `"127.0.0.1"`
 
 ### `INFLUX_PORT`
 

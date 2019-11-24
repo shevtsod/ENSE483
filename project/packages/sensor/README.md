@@ -29,7 +29,7 @@ Default: `1883`
 
 ### `MQTT_PUB_TOPIC`
 
-**Required**. MQTT topic to publish to.
+**Required.** MQTT topic to publish to.
 
 ### `MQTT_PUB_INTERVAL`
 

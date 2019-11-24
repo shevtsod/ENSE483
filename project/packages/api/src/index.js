@@ -27,11 +27,9 @@ process.on('unhandledRejection', (err) => {
 
     // Stop HTTP server
     await new Promise((resolve) => server.close((err) => {
-      if (err) {
-        logger.error(`Error closing HTTP server\n  ${err}`);
-      } else {
-        logger.info('Closed HTTP server');
-      }
+      if (err) throw err;
+
+      logger.info('Closed HTTP server');
 
       resolve();
     }));
