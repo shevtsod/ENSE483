@@ -3,7 +3,7 @@
  *
  * @param type {string} Type of log (info, error, etc.)
  * @param message {string} Message to be logged
- * @return {string} Formatted message
+ * @returns {string} Formatted message
  */
 function formatLogMessage(type, message) {
   return `${new Date().toISOString()} [${type}]\t${message}\n`;
@@ -37,7 +37,7 @@ exports.logger = {
  *
  * @param min {number} Minimum value
  * @param max {number} Maximum value
- * @return {number} Random value in range [min, max]
+ * @returns {number} Random value in range [min, max]
  */
 exports.generateRandomNumber = (min, max) => {
   // Generate random value in range [0, 1]

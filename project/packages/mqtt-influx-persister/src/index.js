@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { logger, parseMQTTTopic } = require('./util');
 const mqttClient = require('./mqttClient');
 const influxClient = require('./influxClient');

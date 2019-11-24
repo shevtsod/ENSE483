@@ -1,12 +1,15 @@
-require('dotenv').config();
+const { Model } = require('objection');
 
-const app = require('./app');
+const express = require('./express');
 const env = require('./env');
 const knex = require('./db/knex');
 const logger = require('./util/logger');
 
+// Bind Objection.js ORM models to knex (SQL database connection) instance
+Model.knex(knex);
+
 // Start HTTP server at the specified port
-const server = app.listen(env.PORT, () => {
+const server = express.listen(env.PORT, async () => {
   logger.info(`Started HTTP server at "http://${env.HOST}:${env.PORT}"`);
   logger.info('Listening for requests ...');
 });

@@ -45,6 +45,6 @@ https://raw.githubusercontent.com/benmosher/eslint-plugin-import/master/LICENSE
 
 ## [nodemon](https://www.npmjs.com/package/nodemon)
 
-opyright © 2019 Remy Sharp, https://remysharp.com <remy@remysharp.com>
+Copyright © 2019 Remy Sharp, https://remysharp.com <remy@remysharp.com>
 
 License (MIT): https://rem.mit-license.org/

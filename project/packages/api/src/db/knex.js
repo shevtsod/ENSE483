@@ -1,22 +1,23 @@
 const Knex = require('knex');
+const Knexfile = require('./Knexfile');
 
-const env = require('../env');
 const logger = require('../util/logger');
 
-const knex = Knex({
-  client: 'mysql',
-  connection: {
-    host: env.DB_HOST,
-    port: env.DB_PORT,
-    database: env.DB_DB,
-    user: env.DB_USERNAME,
-    password: env.DB_PASSWORD,
-  },
-});
+const knex = Knex(Knexfile);
 
 knex.raw('SELECT "test connection"')
   .then(() => {
-    logger.info('Connected to MySQL/MariaDB server');
+    logger.info('Connected to SQL database server');
+  })
+  .catch((err) => {
+    logger.error(
+      `Failed to connect to SQL database.\n  ${err.stack}`,
+    );
+
+
+    process.exit(1);
   });
 
+
+// Create an SQL database client and wire it to the given server
 module.exports = knex;

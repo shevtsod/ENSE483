@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const env = require('./env');
 const { logger, generateRandomNumber } = require('./util');
 const mqttClient = require('./mqttClient');

@@ -3,7 +3,7 @@
  *
  * @param type {string} Type of log (INFO, ERROR, etc.)
  * @param message {string} Message to be logged
- * @return {string} Formatted message
+ * @returns {string} Formatted message
  */
 function formatLogMessage(type, message) {
   return `${new Date().toISOString()} [${type}]\t${message}\n`;

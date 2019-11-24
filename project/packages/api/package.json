@@ -4,11 +4,14 @@
   "license": "ISC",
   "version": "1.0.0",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "eslint": "eslint ."
+    "start": "node src/index",
+    "dev": "nodemon src/index",
+    "eslint": "eslint .",
+    "knex": "knex --knexfile src/db/Knexfile"
   },
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "date-fns": "^2.8.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "influx": "^5.5.1",

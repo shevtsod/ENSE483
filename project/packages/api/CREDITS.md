@@ -1,6 +1,20 @@
 # Credits
 
-## [dotenv](https://www.npmjs.com/package/)
+## [bcrypt](https://www.npmjs.com/package/bcrypt)
+
+Copyright (c) 2010 Nicholas Campbell
+
+License (MIT):
+https://raw.githubusercontent.com/kelektiv/node.bcrypt.js/master/LICENSE
+
+## [date-fns](https://www.npmjs.com/package/date-fns)
+
+MIT © Sasha Koss
+
+License (MIT):
+https://raw.githubusercontent.com/date-fns/date-fns/master/LICENSE.md
+
+## [dotenv](https://www.npmjs.com/package/dotenv)
 
 Copyright (c) 2015, Scott Motte
 
@@ -80,6 +94,12 @@ https://raw.githubusercontent.com/benmosher/eslint-plugin-import/master/LICENSE
 
 ## [nodemon](https://www.npmjs.com/package/nodemon)
 
-opyright © 2019 Remy Sharp, https://remysharp.com <remy@remysharp.com>
+Copyright © 2019 Remy Sharp, https://remysharp.com <remy@remysharp.com>
 
 License (MIT): https://rem.mit-license.org/
+
+## [wait-for](https://github.com/Eficode/wait-for)
+
+Copyright (c) 2017 Eficode Oy
+
+License (MIT): https://raw.githubusercontent.com/eficode/wait-for/master/LICENSE

@@ -1,3 +1,11 @@
+const path = require('path');
+const dotenv = require('dotenv');
+
+// Load custom environment variables into process.env
+dotenv.config({
+  path: path.resolve(path.resolve(__dirname, '..', '.env')),
+});
+
 const { env } = process;
 
 // Export environment variables with defaults

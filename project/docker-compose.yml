@@ -50,6 +50,30 @@ services:
       INFLUX_DB: project
       INFLUX_USERNAME: project_admin
       INFLUX_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - influxdb
+
+  # API
+  api:
+    build: ./packages/api
+    image: shevtsod/ense483-project-api
+    container_name: api
+    restart: always
+    ports:
+      - "8081:8080"
+    environment:
+      HOST: api
+      SECRET_KEY: ${SECRET_KEY}
+      DB_HOST: mariadb
+      DB_DB: project
+      DB_PASSWORD: ${DB_PASSWORD}
+      INFLUX_HOST: influxdb
+      INFLUX_DB: project
+      INFLUX_USERNAME: project_admin
+      INFLUX_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mariadb
+      - influxdb
 
 volumes:
   mariadb_data:

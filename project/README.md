@@ -16,7 +16,10 @@ actionable information.
 To deploy in production (i.e., on a Raspberry Pi device):
 
 ```shell
+# Set environment variables (can also be done via a .env file)
+export NODE_ENV="production"
 export DB_PASSWORD="my_password"
+export SECRET_KEY="my_secret"
 
 # Start services
 docker-compose up
@@ -37,7 +40,9 @@ created in each database used by the system.
 To develop locally:
 
 ```shell
+# Set environment variables (can also be done via a .env file)
 export DB_PASSWORD="my_password"
+export SECRET_KEY="my_secret"
 
 # Start services
 docker-compose \

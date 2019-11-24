@@ -1,3 +1,8 @@
+const dotenv = require('dotenv');
+
+// Load custom environment variables into process.env
+dotenv.config();
+
 const { env } = process;
 
 // Export environment variables with defaults
