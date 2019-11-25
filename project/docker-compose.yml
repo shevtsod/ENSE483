@@ -66,6 +66,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       DB_HOST: mariadb
       DB_DB: project
+      DB_USERNAME: project_admin
       DB_PASSWORD: ${DB_PASSWORD}
       INFLUX_HOST: influxdb
       INFLUX_DB: project
