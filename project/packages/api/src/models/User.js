@@ -1,5 +1,8 @@
+const { ValidationError } = require('objection');
+
 const Model = require('./Model');
 const Role = require('./Role');
+const { hashPassword } = require('../util/crypto');
 
 /**
  * Represents a user of the application and provides facilities for
@@ -18,7 +21,7 @@ class User extends Model {
   /**
    * Defines relationships with other models
    *
-   * @returns {Object} Model relationships
+   * @returns {object} Model relationships
    */
   static get relationMappings() {
     return {
@@ -58,10 +61,12 @@ class User extends Model {
           minLength: 1,
           maxLength: 255,
         },
-        role_id: {
+        roleId: {
           type: 'integer',
+          minimum: 1,
         },
       },
+      additionalProperties: false,
     };
   }
 
@@ -78,14 +83,120 @@ class User extends Model {
   /**
    * Performs additional processing before a new record is inserted.
    *
-   * @param queryContext {Object} Context object of the insert query
+   * @param queryContext {object} Context object of the insert query
    */
   async $beforeInsert(queryContext) {
     await super.$beforeInsert(queryContext);
 
+    // Ensure that the username is unique
+    const usernameExists = !!(await User.query()
+      .where('username', this.username)
+      .resultSize());
+
+    if (usernameExists) {
+      throw new ValidationError({
+        type: 'ModelValidation',
+        data: {
+          username: {
+            message: 'must be unique',
+          },
+        },
+      });
+    }
+
+    // Hash the given password
+    this.password = await hashPassword(this.password);
+
     // Set a default role if none is provided
     if (!this.roleId) {
       this.roleId = (await Role.farmer()).$id();
+    } else {
+      // If a role ID is given, ensure that it exists
+      await Role.query().findById(this.roleId).throwIfNotFound();
+    }
+  }
+
+  /**
+   * Performs additional processing before an existing record is updated.
+   *
+   * @param opt {object} Update options
+   * @param queryContext {object} Context object of the update query
+   */
+  async $beforeUpdate(opt, queryContext) {
+    await super.$beforeUpdate(queryContext);
+
+    // Ensure that the username is unique
+    if (this.username && this.username !== opt.old.username) {
+      const usernameExists = !!(await User.query()
+        .where('username', this.username)
+        .resultSize());
+
+      if (usernameExists) {
+        throw new ValidationError({
+          type: 'ModelValidation',
+          data: {
+            username: {
+              message: 'must be unique',
+            },
+          },
+        });
+      }
+    }
+
+    // Hash the given password
+    if (this.password) this.password = await hashPassword(this.password);
+
+    const newRole = await Role.query()
+      .findById(this.roleId)
+      .skipUndefined();
+
+    // Ensure that the related role ID is valid
+    if (this.roleId && !newRole) {
+      throw new ValidationError({
+        type: 'ModelValidation',
+        data: {
+          roleId: {
+            message: 'unknown role ID',
+          },
+        },
+      });
+    }
+
+    const adminRoleId = (await Role.admin()).$id();
+    const adminRoleCount = await User.query()
+      .joinRelation('role')
+      .where('role.name', 'admin')
+      .resultSize();
+
+    // Ensure that the last admin user's role cannot be modified
+    if (this.roleId && adminRoleCount === 1 && opt.old.roleId === adminRoleId) {
+      throw new ValidationError({
+        type: 'ModelValidation',
+        message: "Cannot modify last admin user's role",
+      });
+    }
+  }
+
+  /**
+   * Performs additional processing before an existing record is deleted.
+   *
+   * @param queryContext {object} Context object of the update query
+   */
+  async $beforeDelete(queryContext) {
+    await super.$beforeDelete(queryContext);
+
+    const adminRoleId = (await Role.admin()).$id();
+    const adminRoleCount = await User.query()
+      .joinRelation('role')
+      .where('role.name', 'admin')
+      .resultSize();
+
+    // Ensure that the last admin user's role cannot be modified
+    if (this.roleId && adminRoleCount === 1 && this.roleId === adminRoleId) {
+      throw new ValidationError({
+        type: 'ModelValidation',
+        message: 'Cannot delete last admin user',
+      });
     }
   }
 }

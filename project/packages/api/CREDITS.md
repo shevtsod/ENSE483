@@ -7,6 +7,15 @@ Copyright (c) 2010 Nicholas Campbell
 License (MIT):
 https://raw.githubusercontent.com/kelektiv/node.bcrypt.js/master/LICENSE
 
+## [body-parser](https://www.npmjs.com/package/body-parser)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+License (MIT):
+https://raw.githubusercontent.com/expressjs/body-parser/master/LICENSE
+
 ## [date-fns](https://www.npmjs.com/package/date-fns)
 
 MIT © Sasha Koss
@@ -32,6 +41,13 @@ Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
 License (MIT):
 https://raw.githubusercontent.com/expressjs/express/master/LICENSE
 
+## [express-promise-router](https://www.npmjs.com/package/express-promise-router)
+
+Copyright (c) 2014 express-promise-router
+
+License (MIT):
+https://raw.githubusercontent.com/express-promise-router/express-promise-router/master/LICENSE
+
 ## [influx](https://www.npmjs.com/package/influx)
 
 Copyright (c) 2016 Connor Peet
@@ -51,6 +67,14 @@ https://raw.githubusercontent.com/auth0/node-jsonwebtoken/master/LICENSE
 Copyright (c) 2013-present Tim Griesser
 
 License (MIT): https://raw.githubusercontent.com/knex/knex/master/LICENSE
+
+## [morgan](https://www.npmjs.com/package/morgan)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+
+Copyright (c) 2014-2017 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+License (MIT): https://raw.githubusercontent.com/expressjs/morgan/master/LICENSE
 
 ## [mysql](https://www.npmjs.com/package/mysql)
 

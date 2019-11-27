@@ -61,7 +61,7 @@ Default: `3306`
 
 **Required.** Password of MySQL/MariaDB user to connect as.
 
-### `INFLUX_HOST`: env.INFLUX_HOST || '127.0.0.1',
+### `INFLUX_HOST`
 
 Host of InfluxDB server to connect to.
 
@@ -73,15 +73,15 @@ Port of InfluxDB server to connect to.
 
 Default: `8086`
 
-### `INFLUX_DB`: env.INFLUX_DB,
+### `INFLUX_DB`
 
 **Required.** Database name to use inside InfluxDB server to connect to.
 
-### `INFLUX_USERNAME`: env.INFLUX_USERNAME,
+### `INFLUX_USERNAME`
 
 **Required.** Username of InfluxDB user to connect as.
 
-### `INFLUX_PASSWORD`: env.INFLUX_PASSWORD
+### `INFLUX_PASSWORD`
 
 **Required.** Password of InfluxDB user to connect as.
 

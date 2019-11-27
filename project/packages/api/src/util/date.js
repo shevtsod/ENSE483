@@ -8,4 +8,4 @@ const { format } = require('date-fns');
  * @param date {Date} Date to format
  * @returns {string} SQL-compatible timestamp
  */
-exports.toSQLTimestamp = (date) => format(date, 'yyyy-MM-dd HH:MM:ss');
+exports.toSQLTimestamp = (date) => format(date, 'yyyy-MM-dd HH:mm:ss');

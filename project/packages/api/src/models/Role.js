@@ -16,7 +16,7 @@ class Role extends Model {
   /**
    * Defines relationships with other models
    *
-   * @returns {Object} Model relationships
+   * @returns {object} Model relationships
    */
   static get relationMappings() {
     // eslint-disable-next-line global-require
@@ -49,18 +49,13 @@ class Role extends Model {
         'displayName',
       ],
       properties: {
-        name: {
-          type: 'string',
-          minLength: 1,
-          maxLength: 255,
-          enum: ['admin', 'worker', 'farmer'],
-        },
         displayName: {
           type: 'string',
           minLength: 1,
           maxLength: 255,
         },
       },
+      additionalProperties: false,
     };
   }
 
