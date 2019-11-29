@@ -6,7 +6,6 @@ exports.up = (knex) => knex.schema
   .table('users', (table) => {
     table.string('username').notNullable().alter();
     table.string('password').notNullable().alter();
-    table.integer('role_id').unsigned().notNullable().alter();
   })
   .createTable('pigs', (table) => {
     table.increments('id').primary();
@@ -36,7 +35,6 @@ exports.down = (knex) => knex.schema
   .table('users', (table) => {
     table.string('username').nullable().alter();
     table.string('password').nullable().alter();
-    table.integer('role_id').unsigned().nullable().alter();
   })
   .table('roles', (table) => {
     table.string('name').nullable().alter();
