@@ -10,12 +10,12 @@ exports.up = (knex) => knex.schema
   })
   .createTable('pigs', (table) => {
     table.increments('id').primary();
-    table.string('rfid').unique().notNullable();
+    table.string('rfid').notNullable();
     table.timestamps(true, true);
   })
   .createTable('batch_data', (table) => {
     table.increments('id').primary();
-    table.string('type').unique().notNullable();
+    table.string('type').notNullable();
     table.boolean('status').notNullable().defaultTo(true);
     table.integer('pig_id').unsigned().notNullable();
     table.foreign('pig_id').references('pigs.id');
@@ -23,7 +23,7 @@ exports.up = (knex) => knex.schema
   })
   .createTable('sensors', (table) => {
     table.increments('id').primary();
-    table.string('type').unique().notNullable();
+    table.string('type').notNullable();
     table.integer('pig_id').unsigned().notNullable();
     table.foreign('pig_id').references('pigs.id');
     table.timestamps(true, true);
