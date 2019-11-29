@@ -4,8 +4,19 @@ const User = require('../../models/User');
 const { checkPassword } = require('../../util/crypto');
 const { sign } = require('../../util/jwt');
 const HttpError = require('../../errors/HttpError');
+const jwt = require('../middleware/jwt');
 
 const router = Router();
+
+/**
+ * Returns the current authenticated user's information.
+ *
+ * @param req {object} Express request
+ * @param res {object} Express response
+ */
+router.get('/', jwt, (req, res) => {
+  res.json(req.user);
+});
 
 /**
  * Accepts a username and password provided by the user, authenticates the
@@ -14,9 +25,8 @@ const router = Router();
  * @see https://jwt.io/
  * @param req {object} Express request
  * @param res {object} Express response
- * @param next {Function} Next Express middleware in the chain
  */
-router.post('/access_token', async (req, res, next) => {
+router.post('/access_token', async (req, res) => {
   const { username, password } = req.body;
 
   // Validate passed params
@@ -42,7 +52,8 @@ router.post('/access_token', async (req, res, next) => {
 
   // Respond with the token
   res.json({
-    access_token: token,
+    ...token,
+    token_type: 'bearer',
   });
 });
 

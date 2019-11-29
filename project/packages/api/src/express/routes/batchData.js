@@ -1,12 +1,12 @@
 const Router = require('express-promise-router');
 
 const model = require('./common/model');
-const User = require('../../models/User');
+const BatchDatum = require('../../models/BatchDatum');
 
 module.exports = Router()
-  .use('/users', model(User, {
-    rolesRead: ['admin'],
+  .use('/batch_data', model(BatchDatum, {
+    rolesRead: [],
     rolesCreate: ['admin'],
-    rolesUpdate: ['admin'],
+    rolesUpdate: [],
     rolesDelete: ['admin'],
   }));

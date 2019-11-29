@@ -20,7 +20,10 @@ exports.sign = (payload) => new Promise((resolve, reject) => {
   jsonwebtoken.sign(payload, SECRET_KEY, jwtOptions, (err, token) => {
     if (err) return reject(err);
 
-    return resolve(token);
+    return resolve({
+      access_token: token,
+      expires_in: jwtOptions.expiresIn,
+    });
   });
 });
 

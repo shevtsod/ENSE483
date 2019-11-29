@@ -1,5 +1,4 @@
 const HttpError = require('../../errors/HttpError');
-const User = require('../../models/User');
 const Role = require('../../models/Role');
 
 /**
@@ -7,14 +6,15 @@ const Role = require('../../models/Role');
  *
  * @param roleNames {Array<string>} Names of roles to allow
  */
-module.exports = (roleNames) => (req, res, next) => {
-  Role
-    .query()
-    .findById(req.user.roleId)
-    .then((role) => {
-      if (!roleNames.includes(role.name)) throw new HttpError(401);
+module.exports = (roleNames = []) => async (req, res, next) => {
+  // If the list of role names is empty, allow all roles.
+  if (!roleNames.length) return next();
 
-      next();
-    })
-    .catch((err) => next(err));
+  const role = await Role
+    .query()
+    .findById(req.user.roleId);
+
+  if (!roleNames.includes(role.name)) throw new HttpError(401);
+
+  next();
 };

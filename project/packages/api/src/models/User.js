@@ -49,6 +49,7 @@ class User extends Model {
       required: [
         'username',
         'password',
+        'roleId',
       ],
       properties: {
         username: {
@@ -127,7 +128,7 @@ class User extends Model {
 
     // Ensure that the username is unique
     if (this.username && this.username !== opt.old.username) {
-      const usernameExists = !!(await User.query()
+      const usernameExists = !!(await this.constructor.query()
         .where('username', this.username)
         .resultSize());
 
@@ -163,7 +164,7 @@ class User extends Model {
     }
 
     const adminRoleId = (await Role.admin()).$id();
-    const adminRoleCount = await User.query()
+    const adminRoleCount = await this.constructor.query()
       .joinRelation('role')
       .where('role.name', 'admin')
       .resultSize();
@@ -172,7 +173,11 @@ class User extends Model {
     if (this.roleId && adminRoleCount === 1 && opt.old.roleId === adminRoleId) {
       throw new ValidationError({
         type: 'ModelValidation',
-        message: "Cannot modify last admin user's role",
+        data: {
+          roleId: {
+            message: 'cannot modify when only one admin user',
+          },
+        },
       });
     }
   }
@@ -186,7 +191,7 @@ class User extends Model {
     await super.$beforeDelete(queryContext);
 
     const adminRoleId = (await Role.admin()).$id();
-    const adminRoleCount = await User.query()
+    const adminRoleCount = await this.constructor.query()
       .joinRelation('role')
       .where('role.name', 'admin')
       .resultSize();
@@ -195,7 +200,7 @@ class User extends Model {
     if (this.roleId && adminRoleCount === 1 && this.roleId === adminRoleId) {
       throw new ValidationError({
         type: 'ModelValidation',
-        message: 'Cannot delete last admin user',
+        message: 'cannot delete last admin user',
       });
     }
   }

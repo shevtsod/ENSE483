@@ -1,10 +1,10 @@
 const Router = require('express-promise-router');
 
 const model = require('./common/model');
-const User = require('../../models/User');
+const Role = require('../../models/Role');
 
 module.exports = Router()
-  .use('/users', model(User, {
+  .use('/roles', model(Role, {
     rolesRead: ['admin'],
     rolesCreate: ['admin'],
     rolesUpdate: ['admin'],
