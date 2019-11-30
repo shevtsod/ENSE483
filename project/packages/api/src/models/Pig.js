@@ -123,6 +123,35 @@ class Pig extends Model {
       }
     }
   }
+
+  /**
+   * Performs additional processing before an existing record is deleted.
+   *
+   * @param queryContext {object} Context object of the update query
+   */
+  async $beforeDelete(queryContext) {
+    await super.$beforeDelete(queryContext);
+
+    // eslint-disable-next-line global-require
+    const Sensor = require('./Sensor');
+    // eslint-disable-next-line global-require
+    const BatchDatum = require('./BatchDatum');
+
+    // Delete related models
+    const sensors = await Sensor.query()
+      .where('pig_id', this.id);
+
+    await Promise.all(
+      sensors.map((sensor) => sensor.$query().delete()),
+    );
+
+    const batchData = await BatchDatum.query()
+      .where('pig_id', this.id);
+
+    await Promise.all(
+      batchData.map((batchDatum) => batchDatum.$query().delete()),
+    );
+  }
 }
 
 module.exports = Pig;

@@ -73,23 +73,30 @@ class Sensor extends Model {
   async $beforeInsert(queryContext) {
     await super.$beforeInsert(queryContext);
 
-    // Ensure that the type is unique
+    // Ensure that the pig exists
+    await Pig.query()
+      .findById(this.pigId)
+      .throwIfNotFound();
+
+    // Ensure that the type is unique per pig
     const typeExists = !!(await this.constructor.query()
-      .where('type', this.type)
-      .resultSize());
+      .where({
+        type: this.type,
+        pig_id: this.pigId,
+      })
+      .resultSize()
+    );
 
     if (typeExists) {
       throw new ValidationError({
         type: 'ModelValidation',
         data: {
           type: {
-            message: 'must be unique',
+            message: 'must be unique per pig',
           },
         },
       });
     }
-
-    // TODO: Ensure that the pigId is unique
   }
 
   /**
@@ -101,10 +108,20 @@ class Sensor extends Model {
   async $beforeUpdate(opt, queryContext) {
     await super.$beforeUpdate(queryContext);
 
-    // Ensure that the type is unique
-    if (this.type && this.type !== opt.old.type) {
+    if (this.pigId) {
+      // Ensure that the pig exists
+      await Pig.query()
+        .findById(this.pigId)
+        .throwIfNotFound();
+    }
+
+    // Ensure that the type is unique per pig
+    if (this.type) {
       const typeExists = !!(await this.constructor.query()
-        .where('type', this.type)
+        .where({
+          type: this.type,
+          pig_id: this.pigId || opt.old.pigId,
+        })
         .resultSize());
 
       if (typeExists) {
@@ -112,14 +129,12 @@ class Sensor extends Model {
           type: 'ModelValidation',
           data: {
             type: {
-              message: 'must be unique',
+              message: 'must be unique per pig',
             },
           },
         });
       }
     }
-
-    // TODO: Ensure that the pigId is unique
   }
 
   /**

@@ -129,6 +129,9 @@ class Role extends Model {
   async $beforeDelete(queryContext) {
     await super.$beforeDelete(queryContext);
 
+    // eslint-disable-next-line global-require
+    const User = require('./User');
+
     // Ensure that default roles cannot be deleted
     if (defaultRoles.includes(this.name)) {
       throw new ValidationError({
@@ -136,6 +139,18 @@ class Role extends Model {
         message: `cannot delete roles with name [${defaultRoles.join(', ')}]`,
       });
     }
+
+    const farmerRoleId = (await this.constructor.farmer()).$id();
+
+    // Change related users' roles
+    const users = await User.query()
+      .where('role_id', this.id);
+
+    await Promise.all(
+      users.map((user) => user.$query().patch({
+        roleId: farmerRoleId,
+      })),
+    );
   }
 
   /**

@@ -90,7 +90,7 @@ class User extends Model {
     await super.$beforeInsert(queryContext);
 
     // Ensure that the username is unique
-    const usernameExists = !!(await User.query()
+    const usernameExists = !!(await this.constructor.query()
       .where('username', this.username)
       .resultSize());
 
@@ -108,12 +108,14 @@ class User extends Model {
     // Hash the given password
     this.password = await hashPassword(this.password);
 
-    // Set a default role if none is provided
-    if (!this.roleId) {
-      this.roleId = (await Role.farmer()).$id();
-    } else {
+    if (this.roleId) {
       // If a role ID is given, ensure that it exists
-      await Role.query().findById(this.roleId).throwIfNotFound();
+      await Role.query()
+        .findById(this.roleId)
+        .throwIfNotFound();
+    } else {
+      // Set a default role if none is provided
+      this.roleId = (await Role.farmer()).$id();
     }
   }
 
@@ -145,40 +147,34 @@ class User extends Model {
     }
 
     // Hash the given password
-    if (this.password) this.password = await hashPassword(this.password);
-
-    const newRole = await Role.query()
-      .findById(this.roleId)
-      .skipUndefined();
-
-    // Ensure that the related role ID is valid
-    if (this.roleId && !newRole) {
-      throw new ValidationError({
-        type: 'ModelValidation',
-        data: {
-          roleId: {
-            message: 'unknown role ID',
-          },
-        },
-      });
+    if (this.password) {
+      this.password = await hashPassword(this.password);
     }
 
-    const adminRoleId = (await Role.admin()).$id();
-    const adminRoleCount = await this.constructor.query()
-      .joinRelation('role')
-      .where('role.name', 'admin')
-      .resultSize();
+    if (this.roleId && this.roleId !== opt.old.roleId) {
+      // Ensure that the related role ID is valid
+      await Role.query()
+        .findById(this.roleId)
+        .skipUndefined()
+        .throwIfNotFound();
 
-    // Ensure that the last admin user's role cannot be modified
-    if (this.roleId && adminRoleCount === 1 && opt.old.roleId === adminRoleId) {
-      throw new ValidationError({
-        type: 'ModelValidation',
-        data: {
-          roleId: {
-            message: 'cannot modify when only one admin user',
+      const adminRoleId = (await Role.admin()).$id();
+      const adminRoleCount = await this.constructor.query()
+        .joinRelation('role')
+        .where('role.name', 'admin')
+        .resultSize();
+
+      // Ensure that the last admin user's role cannot be modified
+      if (adminRoleCount === 1 && opt.old.roleId === adminRoleId) {
+        throw new ValidationError({
+          type: 'ModelValidation',
+          data: {
+            roleId: {
+              message: 'cannot modify when only one admin user',
+            },
           },
-        },
-      });
+        });
+      }
     }
   }
 
@@ -197,7 +193,7 @@ class User extends Model {
       .resultSize();
 
     // Ensure that the last admin user's role cannot be modified
-    if (this.roleId && adminRoleCount === 1 && this.roleId === adminRoleId) {
+    if (adminRoleCount === 1 && this.roleId === adminRoleId) {
       throw new ValidationError({
         type: 'ModelValidation',
         message: 'cannot delete last admin user',
