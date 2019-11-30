@@ -138,7 +138,6 @@ class BatchDatum extends Model {
         });
       }
     }
-    }
   }
 }
 
