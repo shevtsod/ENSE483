@@ -30,10 +30,21 @@ docker-compose down
 
 ## Environment Variables
 
+### `NODE_ENV`
+
+Environment to run Node.js containers in. Affects debugging features such as
+logging levels.
+
+Default: `"development"`
+
 ### `DB_PASSWORD`
 
 **Required.** Password for the user account with read/write permissions that is
 created in each database used by the system.
+
+### `SECRET_KEY`
+
+**Required.** See [API](./packages/api#secret_key).
 
 ## API Reference
 
