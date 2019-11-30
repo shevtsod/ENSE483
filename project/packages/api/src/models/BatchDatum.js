@@ -76,17 +76,26 @@ class BatchDatum extends Model {
   async $beforeInsert(queryContext) {
     await super.$beforeInsert(queryContext);
 
-    // Ensure that the type is unique
+    // Ensure that the pig exists
+    await Pig.query()
+      .findById(this.pigId)
+      .throwIfNotFound();
+
+    // Ensure that the type is unique per pig
     const typeExists = !!(await this.constructor.query()
-      .where('type', this.type)
-      .resultSize());
+      .where({
+        type: this.type,
+        pig_id: this.pigId,
+      })
+      .resultSize()
+    );
 
     if (typeExists) {
       throw new ValidationError({
         type: 'ModelValidation',
         data: {
           type: {
-            message: 'must be unique',
+            message: 'must be unique per pig',
           },
         },
       });
@@ -102,26 +111,33 @@ class BatchDatum extends Model {
   async $beforeUpdate(opt, queryContext) {
     await super.$beforeUpdate(queryContext);
 
+    if (this.pigId) {
+      // Ensure that the pig exists
+      await Pig.query()
+        .findById(this.pigId)
+        .throwIfNotFound();
+    }
+
+    // Ensure that the type is unique per pig
     if (this.type) {
-      // Ensure that the type is unique
-      if (this.type !== opt.old.type) {
-        const typeExists = !!(await this.constructor.query()
-          .where('type', this.type)
-          .resultSize());
+      const typeExists = !!(await this.constructor.query()
+        .where({
+          type: this.type,
+          pig_id: this.pigId || opt.old.pigId,
+        })
+        .resultSize());
 
-        if (typeExists) {
-          throw new ValidationError({
-            type: 'ModelValidation',
-            data: {
-              type: {
-                message: 'must be unique',
-              },
+      if (typeExists) {
+        throw new ValidationError({
+          type: 'ModelValidation',
+          data: {
+            type: {
+              message: 'must be unique per pig',
             },
-          });
-        }
+          },
+        });
       }
-
-      // TODO: Ensure only users with admin role can modify type
+    }
     }
   }
 }
