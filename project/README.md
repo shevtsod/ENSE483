@@ -35,6 +35,18 @@ docker-compose down
 **Required.** Password for the user account with read/write permissions that is
 created in each database used by the system.
 
+## API Reference
+
+API reference is available in the form of an interactive environment for the
+[Insomnia REST Client](https://insomnia.rest/).
+
+To browse the API reference and send requests via Insomnia:
+
+1. Click on the environment name (top left corner).
+2. Click on **Import/Export**.
+3. Click on **Import Data** -> **From File**
+4. Locate and import [insomnia.json](./doc/insomnia.json) from this repository.
+
 ## Developing
 
 To develop locally:
