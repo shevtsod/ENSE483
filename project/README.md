@@ -1,5 +1,7 @@
 # ENSE 483 - Project - Pig Farm Management IoT System
 
+> ### Presentaton: https://docs.google.com/presentation/d/1ExSQbTQov24KCKuZ52RYS2P_npSEnD3D8d_UHptHTkA/edit?usp=sharing
+
 This system implements **Meat UC5.1: Pig Farm Management** as specified in the
 _Internet of Food & Farm 2020 Use Case Architectures and Overview of the Related
 IoT Systems_ document. This system automates management of pig farms using
