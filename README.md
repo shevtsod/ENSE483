@@ -1,17 +1,9 @@
 # ENSE 483
 
-My solutions to homework, labs, and the project in **ENSE 483 - Digital Wireless
-Systems**, Fall 2019.
+My solutions to labs and the project in **ENSE 483 - Digital Wireless Systems**,
+Fall 2019.
 
 ## Overview
-
-### Homework
-
-- [**Homework 0** - IoT Architecture](./homework/homework0)
-- [**Homework 1** - IoT Requirements](./homework/homework1)
-- [**Homework 2** - Bluetooth Requirements](./homework/homework2)
-- [**Homework 3** - Service Discovery Application Profile](./homework/homework3)
-- [**Homework 4** - Personal Access Networking Profile](./homework/homework4)
 
 ### Labs
 
